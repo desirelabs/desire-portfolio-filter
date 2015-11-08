@@ -1,0 +1,21 @@
+
+.filter-button-group {
+    padding: 10px;
+}
+
+.grid-sizer,
+.portfolio-item { width: 31.14%; }
+.gutter-sizer { width: 3.33%; }
+
+.portfolio-item img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+}
+
+.portfolio-item {
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #efefef;
+}
