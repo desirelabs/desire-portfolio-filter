@@ -1,11 +1,20 @@
+/**
+ * @author: Franck LEBAS
+ * @package desire-portfolio-filter
+ */
 
 .filter-button-group {
     padding: 10px;
 }
 
 .grid-sizer,
-.portfolio-item { width: 31.14%; }
-.gutter-sizer { width: 3.33%; }
+.portfolio-item {
+    width: 31.14%;
+}
+
+.gutter-sizer {
+    width: 3.33%;
+}
 
 .portfolio-item img {
     width: auto;
@@ -15,7 +24,12 @@
 
 .portfolio-item {
     box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
     padding: 10px;
+    margin-bottom: 3.33%;
     background-color: #fff;
     border: 1px solid #efefef;
 }

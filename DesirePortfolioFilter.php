@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Desire Portfolio Filter
  * Plugin URI: http://wordpress.org/plugins/desire-portfolio-filter/
- * Description: Add the ability to filter Jetpack Portfolios by type.
+ * Description: Desire Portfolio Filter is designed to allow visitors to filter Jetpack portfolio by type.
  * Author: Franck LEBAS
  * Author URI: http://desirelabs.fr
- * Version: 0.1
+ * Version: 0.1.1
  * Licence: Apache
  * http://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: desire-portfolio-filter
@@ -16,7 +16,7 @@ define( 'DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
 
 /**
  * First check if jetpack is activated
- * Else, Desire Portfolio Filter cannot be
+ * Else, Desire Portfolio Filter cannot be activated
  */
 function is_jetpack() {
 	if ( is_admin() && current_user_can( 'activate_plugins' ) && ! is_plugin_active( 'jetpack/jetpack.php' ) ) {
@@ -37,7 +37,7 @@ add_action( 'admin_init', 'is_jetpack' );
  */
 function disabled_notice() {
 	$class   = "error";
-	$message = __( 'Desire Porfolio Filter requires <a href="https://fr.wordpress.org/plugins/jetpack/" target="_blank">jetpack to installed and be activated</a>.', 'desire-portfolio-filter' );
+	$message = print( __( 'Desire Porfolio Filter requires Jetpack plugin and Custom Post Types Portfolio feature to be activated', 'desire-portfolio-filter' ) );
 	echo "<div class=\"$class\"> <p>$message</p></div>";
 }
 
@@ -47,7 +47,7 @@ class DesirePortfolioFilter {
 
 	static function init() {
 		// Language
-		load_theme_textdomain( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . '/lang' );
+		load_theme_textdomain( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'lang' );
 
 		// Hooks and actions init
 		add_theme_support( 'jetpack-portfolio' );
@@ -60,10 +60,11 @@ class DesirePortfolioFilter {
 
 	static function desire_scripts() {
 
-		wp_register_script( 'desire-isotope', plugin_dir_url( __FILE__ ) . 'js/isotope.pkgd.min.js', array( 'jquery' ), '2.2.2', true );
-		wp_enqueue_style( 'desire', plugin_dir_url( __FILE__ ) . 'css/desire-portfolio-filter.css', array(), '1.0', 'all' );
-		wp_register_script( 'desire-portfolio-filter', plugin_dir_url( __FILE__ ) . 'js/desire-portfolio-filter.js', array( 'jquery' ), '1.0', true );
+		wp_register_script( 'desire-isotope', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'js/isotope.pkgd.min.js', array( 'jquery' ), '2.2.2', true );
+		wp_register_style( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'css/desire-portfolio-filter.css', array(), '1.0', 'all' );
+		wp_register_script( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'js/desire-portfolio-filter.js', array( 'jquery' ), '1.0', true );
 
+		wp_enqueue_style( 'desire-portfolio-filter' );
 		wp_enqueue_script( 'desire-isotope' );
 		wp_enqueue_script( 'desire-portfolio-filter' );
 	}
