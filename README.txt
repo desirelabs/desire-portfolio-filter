@@ -14,6 +14,8 @@ This plugin allows visitors to filter Jetpack portfolio galleries.
 
 == Installation ==
 
+! This plugin requires Jetpack plugin to be activated to get running !
+
 Upload the Desire Portfolio Filter plugin to your wp-content/plugins/ blog folder, then activate it.
 
 * Go to your portfolio page
