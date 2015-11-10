@@ -4,9 +4,8 @@ Contributors: franck
 Tags: portfolio, isotope, masonry, jetpack, pinterest like
 Requires at least: 3.5
 Tested up to: 4.3.1
-dev tag: 0.1.1
-License: Apache 2.0 
-http://www.apache.org/licenses/LICENSE-2.0
+dev tag: 0.1.2
+License: Apache 2.0
 
 == Description ==
 

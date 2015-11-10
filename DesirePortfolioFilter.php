@@ -5,7 +5,7 @@
  * Description: Desire Portfolio Filter is designed to allow visitors to filter Jetpack portfolio by type.
  * Author: Franck LEBAS
  * Author URI: http://desirelabs.fr
- * Version: 0.1.1
+ * Version: 0.1.2
  * Licence: Apache
  * http://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: desire-portfolio-filter
