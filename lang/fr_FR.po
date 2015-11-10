@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: desire-portfolio-filter\n"
-"POT-Creation-Date: 2015-11-08 16:25+0100\n"
-"PO-Revision-Date: 2015-11-08 16:27+0100\n"
+"POT-Creation-Date: 2015-11-08 22:45+0100\n"
+"PO-Revision-Date: 2015-11-08 22:45+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -19,18 +19,36 @@ msgstr ""
 
 #: /home/franck/www/atsouhaits/wp-content/plugins/desire-portfolio-filter/DesirePortfolioFilter.php:40
 msgid ""
-"Desire Porfolio Filter has been deactivated. It requires <a href=\"https://"
-"fr.wordpress.org/plugins/jetpack/\" target=\"_blank\">Jetpack plugin to be "
-"installed and activated</a>."
+"Desire Porfolio Filter requires Jetpack plugin and Custom Post Types "
+"Portfolio feature to be activated"
 msgstr ""
-"Desire Porfolio Filter a été désactivé. Il requiert que <a href=\"https://fr."
-"wordpress.org/plugins/jetpack/\" target=\"_blank\">le plugin Jetpack soit "
-"installé et activé</a>."
+"Desire Portfolio Filter nécessite l'activation du plugin Jetpack ainsi que "
+"celle des Custom Post Types Portfolio"
 
 #: /home/franck/www/atsouhaits/wp-content/plugins/desire-portfolio-filter/src/templates/portfolio-template.php:25
 msgid "Show all"
 msgstr "Tout afficher"
 
-#: /home/franck/www/atsouhaits/wp-content/plugins/desire-portfolio-filter/src/templates/portfolio-template.php:41
-msgid "No portfolio found."
-msgstr "Aucun portfolio trouvé."
+#: /home/franck/www/atsouhaits/wp-content/plugins/desire-portfolio-filter/src/templates/portfolio-template.php:80
+msgid "No Project Found"
+msgstr "Aucun projet trouvé."
+
+#~ msgid ""
+#~ "Desire Porfolio Filter requires <a href=\"https://fr.wordpress.org/"
+#~ "plugins/jetpack/\" target=\"_blank\">jetpack to installed and be "
+#~ "activated</a>."
+#~ msgstr ""
+#~ "Desire Porfolio Filter nécéssite le plugin <a href=\"https://fr.wordpress."
+#~ "org/plugins/jetpack/\" target=\"_blank\">Jetpack activé</a>."
+
+#~ msgid ""
+#~ "Desire Porfolio Filter has been deactivated. It requires <a href="
+#~ "\"https://fr.wordpress.org/plugins/jetpack/\" target=\"_blank\">Jetpack "
+#~ "plugin to be installed and activated</a>."
+#~ msgstr ""
+#~ "Desire Porfolio Filter a été désactivé. Il requiert que <a href=\"https://"
+#~ "fr.wordpress.org/plugins/jetpack/\" target=\"_blank\">le plugin Jetpack "
+#~ "soit installé et activé</a>."
+
+#~ msgid "No portfolio found."
+#~ msgstr "Aucun portfolio trouvé."

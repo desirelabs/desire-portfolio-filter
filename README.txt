@@ -1,33 +1,43 @@
 === Desire Portfolio Filter ===
 
 Contributors: franck
-Tags: portfolio, isotope, masonry, jetpack
+Tags: portfolio, isotope, masonry, jetpack, pinterest like
 Requires at least: 3.5
 Tested up to: 4.3.1
-dev tag: 0.1
+dev tag: 0.1.1
 License: Apache 2.0 
 http://www.apache.org/licenses/LICENSE-2.0
 
 == Description ==
 
-This plugin allows visitors to filter Jetpack portfolio galleries.
+Desire Portfolio Filter is designed to allow visitors to filter Jetpack portfolio by type.
 
 == Installation ==
 
-! This plugin requires Jetpack plugin to be activated to get running !
+**This plugin requires Jetpack plugin to be activated to get running !**
 
 Upload the Desire Portfolio Filter plugin to your wp-content/plugins/ blog folder, then activate it.
 
-* Go to your portfolio page
-* Remove Jetpack shortcode
-* Select the newly added Portfolio Template
-* Publish
+1. Go to your portfolio page
+2. Remove Jetpack shortcode
+3. Select the newly added Portfolio Template
+4. Publish
 
 done!
 
-== This is not a stable release ==
+== Development Notes ==
 
-and a lot of improvements are on the go, so dont use it in production environment to avoid any trouble.
+This plugin is not designed to replace Jetpack Portfolio Shortcode. By now, it doesn't offer the same level of customization in queries.
+I'm working on the admin page to make it able to give the same options as Jetpack shortcode.
+
+Concerning the template, especially the gutters and column sizes, there's no option in the administration pages to set it.
+But you have the possibility to supercharge the default CSS with your own values in order to get something that fits your needs :
+
+* use .grid-sizer and .portfolio-item width to define the column width
+* use .gutter-sizer width to set your gutter's size
+* apply a margin-bottom to .portfolio-item, equal to .gutter-sizer width to get the job done
+
+I'm willing to bring those features directly accessible via a dedicated administration menu page very soon. Probabably in the next release. So be patient :)
 
 == Translation ==
 
@@ -36,7 +46,12 @@ The plugin comes with english and french translations. Feel free to fork me on g
 == Support ==
 
 I'll offer support as much as I can through :
-WordPress official page : http://wordpress.org/plugins/desire-portfolio-filter/
-Github official page : https://github.com/neovea/desire-portfolio-filter
+[WordPress official page](http://wordpress.org/plugins/desire-portfolio-filter/ "WordPress Official repository")
+[My Github official page](https://github.com/neovea/desire-portfolio-filter "My Github Official repository")
 
-Notice that this plugin is made on my free time, so please, be patient if I don't answer your requests right away ;)
+*Notice that this plugin is made on my free time, so please, be patient if I don't answer your requests right away ;)*
+
+== Changelog ==
+
+= 0.1.1 =
+* Fix issue when deactivating custom post types but not jetpack

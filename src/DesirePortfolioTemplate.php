@@ -28,7 +28,6 @@ class DesirePortfolioTemplate {
 		}
 
 		return self::$instance;
-
 	}
 
 	/**
@@ -41,10 +40,8 @@ class DesirePortfolioTemplate {
 		// Add a filter to the attributes metabox to inject template into the cache.
 		add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'register_project_templates' ) );
 
-
 		// Add a filter to the save post to inject out template into the page cache
 		add_filter( 'wp_insert_post_data', array( $this, 'register_project_templates' ) );
-
 
 		// Add a filter to the template include to determine if the page has our
 		// template assigned and return it's path
@@ -52,7 +49,7 @@ class DesirePortfolioTemplate {
 
 		// Template to use is set here
 		$this->templates = array(
-			'templates/portfolio-template.php' => 'Portfolio Template',
+			'templates/portfolio-template.php' => 'Portfolio Template'
 		);
 	}
 
@@ -99,8 +96,8 @@ class DesirePortfolioTemplate {
 		}
 
 		$file = plugin_dir_path( __FILE__ ) . get_post_meta(
-				$post->ID, '_wp_page_template', true
-			);
+			$post->ID, '_wp_page_template', true
+		);
 
 		// Just to be safe, we check if the file exist first
 		if ( file_exists( $file ) ) {
