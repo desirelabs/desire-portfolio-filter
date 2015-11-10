@@ -5,7 +5,7 @@
  * Description: Add the ability to filter Jetpack Portfolios by type.
  * Author: Franck LEBAS
  * Author URI: http://desirelabs.fr
- * Version: 1.0
+ * Version: 0.1
  * Licence: Apache
  * http://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: desire-portfolio-filter
