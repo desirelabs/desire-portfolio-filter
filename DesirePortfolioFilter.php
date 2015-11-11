@@ -13,6 +13,7 @@
  */
 
 define( 'DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR', plugin_dir_url( __FILE__ ) );
+define( 'DESIRE_PORTFOLIO_OPTIONS', 'desire_portfolio_options');
 
 /**
  * First check if jetpack is activated
@@ -55,6 +56,9 @@ class DesirePortfolioFilter {
 
 		// Loads portfolio template
 		add_action( 'plugins_loaded', array( 'DesirePortfolioTemplate', 'get_instance' ) );
+
+		$DesirePortfolioOptions = new DesirePortfolioOptions();
+
 	}
 
 

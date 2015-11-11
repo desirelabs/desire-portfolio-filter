@@ -37,7 +37,8 @@ class DesirePortfolioFilterAutoload {
 	 * Class mapping
 	 */
 	private static $classes = array(
-		'DesirePortfolioTemplate' => '/src/DesirePortfolioTemplate.php'
+		'DesirePortfolioTemplate' => '/src/DesirePortfolioTemplate.php',
+		'DesirePortfolioOptions' => '/src/DesirePortfolioOptions.php'
 	);
 
 	/**
