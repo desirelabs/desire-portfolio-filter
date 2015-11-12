@@ -28,169 +28,149 @@ class DesirePortfolioOptions {
 
 	public function dpf_settings_init(  ) {
 
-		register_setting( 'pluginPage', 'dpf_settings' );
+		register_setting( 'dpf_option_page', 'dpf_settings' );
 
 		add_settings_section(
-			'dpf_pluginPage_section',
-			__( 'Your section description', 'desire-portfolio-filter' ),
+			'dpf_portfolio_query_section',
+			__( 'Parameters to query your portfolio projects', 'desire-portfolio-filter' ),
 			array( &$this, 'dpf_settings_section_callback' ),
-			'pluginPage'
+			'dpf_option_page'
 		);
 
 		add_settings_field(
-			'dpf_checkbox_field_0',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_checkbox_field_0_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'display_types',
+			__( 'Display types ?', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_checkbox_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'display_types'
+			)
 		);
 
 		add_settings_field(
-			'dpf_checkbox_field_1',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_checkbox_field_1_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'display_tags',
+			__( 'Display tags ?', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_checkbox_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'display_tags'
+			)
 		);
 
 		add_settings_field(
-			'dpf_checkbox_field_2',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_checkbox_field_2_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'display_content',
+			__( 'Display content ?', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_checkbox_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'display_content'
+			)
 		);
 
 		add_settings_field(
-			'dpf_text_field_3',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_text_field_3_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'include_types',
+			__( 'Include types (seperated by comas)', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_text_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'include_types'
+			)
 		);
 
 		add_settings_field(
-			'dpf_text_field_4',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_text_field_4_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'include_tags',
+			__( 'Include tags (seperated by comas)', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_text_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'include_tags'
+			)
 		);
 
 		add_settings_field(
-			'dpf_text_field_5',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_text_field_5_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'showposts',
+			__( 'Number of projects to show', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_text_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'showposts'
+			)
 		);
 
 		add_settings_field(
-			'dpf_select_field_6',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_select_field_6_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'order',
+			__( 'Ascending or descending order ?', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_select_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'order',
+				'options' => array(
+					'asc',
+					'desc'
+				)
+			)
 		);
 
 		add_settings_field(
-			'dpf_select_field_7',
-			__( 'Settings field description', 'desire-portfolio-filter' ),
-			array( &$this, 'dpf_select_field_7_render' ),
-			'pluginPage',
-			'dpf_pluginPage_section'
+			'orderby',
+			__( 'Order by', 'desire-portfolio-filter' ),
+			array( &$this, 'dpf_select_field_render' ),
+			'dpf_option_page',
+			'dpf_portfolio_query_section',
+			array(
+				'option_name' => 'orderby',
+				'options' => array(
+					'date',
+					'title'
+				)
+			)
 		);
 
 
 	}
 
 
-	public function dpf_checkbox_field_0_render(  ) {
+	public function dpf_checkbox_field_render($args) {
 
 		$options = get_option( 'dpf_settings' );
 		?>
-		<input type='checkbox' name='dpf_settings[dpf_checkbox_field_0]' <?php isset($options['dpf_checkbox_field_0']) ? checked( $options['dpf_checkbox_field_0'], 1 ) : "" ?> value='1'>
+		<input type='checkbox' name='dpf_settings[<?php echo $args['option_name'] ?>]' <?php echo isset($options[$args['option_name']]) ? checked( $options[$args['option_name']], 1 ) : "" ?> value='1'>
 	<?php
 
 	}
 
 
-	public function dpf_checkbox_field_1_render(  ) {
+	public function dpf_text_field_render($args) {
 
 		$options = get_option( 'dpf_settings' );
 		?>
-		<input type='checkbox' name='dpf_settings[dpf_checkbox_field_1]' <?php isset($options['dpf_checkbox_field_1']) ? checked( $options['dpf_checkbox_field_1'], 1 ) : "" ?> value='1'>
+		<input type='text' name='dpf_settings[<?php echo $args['option_name'] ?>]' value='<?php echo isset($options[$args['option_name']]) ? $options[$args['option_name']] : ""; ?>'>
 	<?php
 
 	}
 
 
-	public function dpf_checkbox_field_2_render(  ) {
+	public function dpf_select_field_render($args) {
 
 		$options = get_option( 'dpf_settings' );
 		?>
-		<input type='checkbox' name='dpf_settings[dpf_checkbox_field_2]' <?php isset($options['dpf_checkbox_field_2']) ? checked( $options['dpf_checkbox_field_2'], 1 ) : "" ?> value='1'>
-	<?php
-
-	}
-
-
-	public function dpf_text_field_3_render(  ) {
-
-		$options = get_option( 'dpf_settings' );
-		?>
-		<input type='text' name='dpf_settings[dpf_text_field_3]' value='<?php echo $options['dpf_text_field_3']; ?>'>
-	<?php
-
-	}
-
-
-	public function dpf_text_field_4_render(  ) {
-
-		$options = get_option( 'dpf_settings' );
-		?>
-		<input type='text' name='dpf_settings[dpf_text_field_4]' value='<?php echo $options['dpf_text_field_4']; ?>'>
-	<?php
-
-	}
-
-
-	public function dpf_text_field_5_render(  ) {
-
-		$options = get_option( 'dpf_settings' );
-		?>
-		<input type='text' name='dpf_settings[dpf_text_field_5]' value='<?php echo $options['dpf_text_field_5']; ?>'>
-	<?php
-
-	}
-
-
-	public function dpf_select_field_6_render(  ) {
-
-		$options = get_option( 'dpf_settings' );
-		?>
-		<select name='dpf_settings[dpf_select_field_6]'>
-			<option value='1' <?php selected( $options['dpf_select_field_6'], 1 ); ?>>Option 1</option>
-			<option value='2' <?php selected( $options['dpf_select_field_6'], 2 ); ?>>Option 2</option>
+		<select name='dpf_settings[<?php echo $args['option_name'] ?>]'>
+			<?php foreach ($args['options'] as $key => $val): ?>
+			<option <?php isset($options[$args['option_name']]) ? selected( $options['option_name'], 1 ) : "" ?> value='<?php echo $val; ?>'><?php echo $val ?></option>
+			<?php endforeach; ?>>
 		</select>
 
 	<?php
 
 	}
 
-
-	public function dpf_select_field_7_render(  ) {
-
-		$options = get_option( 'dpf_settings' );
-		?>
-		<select name='dpf_settings[dpf_select_field_7]'>
-			<option value='1' <?php selected( $options['dpf_select_field_7'], 1 ); ?>>Option 1</option>
-			<option value='2' <?php selected( $options['dpf_select_field_7'], 2 ); ?>>Option 2</option>
-		</select>
-
-	<?php
-
-	}
 
 
 	public function dpf_settings_section_callback(  ) {
@@ -208,8 +188,8 @@ class DesirePortfolioOptions {
 			<h2>Desire Portfolio Filter</h2>
 
 			<?php
-			settings_fields( 'pluginPage' );
-			do_settings_sections( 'pluginPage' );
+			settings_fields( 'dpf_option_page' );
+			do_settings_sections( 'dpf_option_page' );
 			submit_button();
 			?>
 
