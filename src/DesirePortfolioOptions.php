@@ -94,7 +94,7 @@ class DesirePortfolioOptions {
 
 		add_settings_field(
 			'showposts',
-			__( 'Number of projects to show', 'desire-portfolio-filter' ),
+			__( 'Number of projects to show (0 for unlimited)', 'desire-portfolio-filter' ),
 			array( &$this, 'dpf_text_field_render' ),
 			'dpf_option_page',
 			'dpf_portfolio_query_section',
