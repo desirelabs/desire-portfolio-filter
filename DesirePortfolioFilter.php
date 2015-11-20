@@ -7,7 +7,7 @@
  * Author URI: http://desirelabs.fr
  * Version: 0.2
  * Licence: Apache
- * http://www.apache.org/licenses/LICENSE-2.0
+ * Licence description: http://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: desire-portfolio-filter
  * Domaine Path: /lang
  */
@@ -63,8 +63,8 @@ class DesirePortfolioFilter {
 
 		wp_register_script( 'desire-isotope', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'js/isotope.pkgd.min.js', array( 'jquery' ), '2.2.2', true );
 		wp_register_script( 'desire-images-loaded', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'js/imagesloaded.pkgd.min.js', array( 'jquery', 'desire-isotope' ), '3.2.0', true );
-		wp_register_style( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'css/desire-portfolio-filter.css', array(), '1.0', 'all' );
-		wp_register_script( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'js/desire-portfolio-filter.js', array( 'jquery', 'desire-isotope', 'desire-images-loaded' ), '1.0', true );
+		wp_register_style( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'css/desire-portfolio-filter.css', array(), '0.2', 'all' );
+		wp_register_script( 'desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . 'js/desire-portfolio-filter.js', array( 'jquery', 'desire-isotope', 'desire-images-loaded' ), '0.2', true );
 
 		wp_enqueue_style( 'desire-portfolio-filter' );
 		wp_enqueue_script( 'desire-isotope' );

@@ -1,7 +1,7 @@
 === Desire Portfolio Filter ===
 
 Contributors: franck
-Tags: portfolio, isotope, masonry, jetpack, pinterest like
+Tags: portfolio, isotope, masonry, jetpack, pinterest like, cards
 Requires at least: 3.5
 Tested up to: 4.3.1
 dev tag: 0.2
@@ -10,7 +10,7 @@ Licence description: http://www.apache.org/licenses/LICENSE-2.0
 
 == Description ==
 
-Desire Portfolio Filter is designed to allow visitors to filter Jetpack portfolio by type.
+Desire Portfolio Filter is designed to allow visitors to filter Jetpack portfolio by type. It's responsive, so can be used on tablets and smartphone, as well as desktop of course.
 
 == Installation ==
 
@@ -31,17 +31,17 @@ This plugin is not designed to replace Jetpack Portfolio Shortcode. By now, it d
 I'm working on the admin page to make it able to give the same options as Jetpack shortcode.
 
 Concerning the template, especially the gutters and column sizes, there's no option in the administration pages to set it.
-But you have the possibility to supercharge the default CSS with your own values in order to get something that fits your needs :
+But you have the possibility to override the default CSS with your own values in order to get something that fits your needs :
 
 * use .grid-sizer and .portfolio-item width to define the column width
 * use .gutter-sizer width to set your gutter's size
 * apply a margin-bottom to .portfolio-item, equal to .gutter-sizer width to get the job done
 
-I'm willing to bring those features directly accessible via a dedicated administration menu page very soon. Probabably in the next release. So be patient :)
+I'm willing to bring those features directly accessible via a dedicated administration menu page or via shortcode very soon. Probabably in a next release. So be patient :)
 
 == Translation ==
 
-The plugin comes with english and french translations. Feel free to fork me on github if you want me to add yours :)
+The plugin comes with english and french translations. Feel free to [fork me on Github](https://github.com/neovea/desire-portfolio-filter "fork me on Github") if you want me to add yours :)
 
 == Support ==
 

@@ -1,6 +1,7 @@
 /**
  * @author: Franck LEBAS
  * @package desire-portfolio-filter
+ * @version: 0.2
  */
 
 ( function( $ ) {
