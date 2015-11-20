@@ -4,9 +4,8 @@ Contributors: franck
 Tags: portfolio, isotope, masonry, jetpack, pinterest like
 Requires at least: 3.5
 Tested up to: 4.3.1
-dev tag: 0.1.1
-License: Apache 2.0 
-http://www.apache.org/licenses/LICENSE-2.0
+dev tag: 0.2
+License: Apache 2.0
 
 == Description ==
 
@@ -52,6 +51,13 @@ I'll offer support as much as I can through :
 *Notice that this plugin is made on my free time, so please, be patient if I don't answer your requests right away ;)*
 
 == Changelog ==
+
+= 0.2 =
+* Fix image loading delay
+* Add responsive design support
+
+= 0.1.2 =
+* Update readme
 
 = 0.1.1 =
 * Fix issue when deactivating custom post types but not jetpack
