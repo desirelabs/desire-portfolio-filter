@@ -55,7 +55,6 @@ class DesirePortfolioFilter {
 
 		// Loads portfolio template
 		add_action( 'plugins_loaded', array( 'DesirePortfolioTemplate', 'get_instance' ) );
-
 	}
 
 
