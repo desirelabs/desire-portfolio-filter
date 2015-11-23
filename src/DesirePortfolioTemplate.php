@@ -46,6 +46,7 @@ class DesirePortfolioTemplate {
 		// Add a filter to the template include to determine if the page has our
 		// template assigned and return it's path
 		add_filter( 'template_include', array( $this, 'view_project_template' ) );
+		add_filter( 'template_include', array( $this, 'view_project_single_template' ) );
 
 		// Template to use is set here
 		$this->templates = array(
@@ -107,6 +108,16 @@ class DesirePortfolioTemplate {
 		}
 
 		return $template;
+	}
+
+	public function view_project_single_template($single_template) {
+
+		global $post;
+
+		if ($post->post_type == 'jetpack-portfolio') {
+			$single_template = dirname( __FILE__ ) . '/templates/portfolio-single-template.php';
+		}
+		return $single_template;
 	}
 }
 
