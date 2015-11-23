@@ -6,7 +6,7 @@ Requires at least: 3.5
 Tested up to: 4.3.1
 dev tag: 0.2
 License: Apache 2.0
-Licence description: http://www.apache.org/licenses/LICENSE-2.0
+Desire Portfolio Filter is a responsive plugin which allows visitors to filter Jetpack portfolio by type.
 
 == Description ==
 
