@@ -4,7 +4,7 @@ Contributors: franck
 Tags: portfolio, isotope, masonry, jetpack, pinterest like, cards
 Requires at least: 3.5
 Tested up to: 4.3.1
-dev tag: 0.2.3
+dev tag: 0.2.3.2
 License: GPLv3
 Desire Portfolio Filter is a responsive plugin which allows visitors to filter Jetpack portfolio by type.
 
@@ -53,7 +53,10 @@ I'll offer support as much as I can through :
 
 == Changelog ==
 
-= 0.2.3 =
+= 0.2.3.2 =
+* Added license file description
+
+= 0.2.3.1 =
 * Licence update to conform with Isotope library included in this package
 
 = 0.2 =
