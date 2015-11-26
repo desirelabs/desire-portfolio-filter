@@ -72,5 +72,3 @@ class DesirePortfolioFilter {
 }
 
 DesirePortfolioFilter::init();
-
-
