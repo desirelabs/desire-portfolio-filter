@@ -30,7 +30,9 @@ class DesirePortfolioFilter {
 		add_theme_support( 'jetpack-portfolio' );
 		add_action( 'wp_enqueue_scripts', array( __CLASS__, 'desire_portfolio_scripts' ) );
 
-		// Loads portfolio template
+		// Loads portfolio template and templates hooks
+		add_action('get_portfolio_filters', array( 'DesirePortfolioTemplateHooks', 'get_portfolio_filters') );
+		add_action('get_portfolio_projects', array( 'DesirePortfolioTemplateHooks', 'get_portfolio_projects') );
 		add_action( 'plugins_loaded', array( 'DesirePortfolioTemplate', 'get_instance' ) );
 	}
 
