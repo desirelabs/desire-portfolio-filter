@@ -17,7 +17,10 @@ get_header();
 
             <?php
             // Retreive portfolio types to build filter buttons
-            $taxonomy = 'jetpack-portfolio-type';
+            $taxonomy = array(
+	            'jetpack-portfolio-type',
+	            'desire-portfolio-type'
+            );
             $tax_terms = get_terms($taxonomy);
             if (count($tax_terms) != 0 && !is_object($tax_terms)):
                 ?>
