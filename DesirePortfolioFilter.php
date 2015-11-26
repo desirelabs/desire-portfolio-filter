@@ -152,31 +152,38 @@ class DesirePortfolioFilter {
 	 */
 	static function desire_portfolio_post_type() {
 		// Register the desire portfolio post type
-		register_post_type( 'desire_portfolio',
-			array(
-				'labels'      => array(
-					'name'          => __( 'Desire Portfolio' ),
-					'singular_name' => __( 'Desire Portfolio' )
-				),
-				'public'      => true,
-				'has_archive' => true,
-				'menu_icon'   => 'dashicons-images-alt',
-				'taxonomies'  => array(
-					'desire_portfolio_type',
-					'desire_portfolio_tag'
-				)
-				/*'capabilities' => array(
-					'edit_post'          => 'edit_desire_portfolio',
-					'read_post'          => 'read_desire_portfolio',
-					'delete_post'        => 'delete_desire_portfolio',
-					'edit_posts'         => 'edit_desire_portfolios',
-					'edit_others_posts'  => 'edit_others_desire_portfolios',
-					'publish_posts'      => 'publish_desire_portfolios',
-					'read_private_posts' => 'read_private_desire_portfolios',
-					'create_posts'       => 'edit_desire_portfolios',
-				),*/
-			)
+		$labels = array(
+			'name'               => _x( 'Desire portfolio', 'post type general name', 'desire portfolio-filter' ),
+			'singular_name'      => _x( 'Book', 'post type singular name', 'desire portfolio-filter' ),
+			'menu_name'          => _x( 'Desire portfolio', 'admin menu', 'desire portfolio-filter' ),
+			'name_admin_bar'     => _x( 'Book', 'add new on admin bar', 'desire portfolio-filter' ),
+			'add_new'            => _x( 'Add New', 'book', 'desire portfolio-filter' ),
+			'add_new_item'       => __( 'Add New Book', 'desire portfolio-filter' ),
+			'new_item'           => __( 'New Book', 'desire portfolio-filter' ),
+			'edit_item'          => __( 'Edit Book', 'desire portfolio-filter' ),
+			'view_item'          => __( 'View Book', 'desire portfolio-filter' ),
+			'all_items'          => __( 'All Desire portfolio', 'desire portfolio-filter' ),
+			'search_items'       => __( 'Search Desire portfolio', 'desire portfolio-filter' ),
+			'parent_item_colon'  => __( 'Parent Desire portfolio:', 'desire portfolio-filter' ),
+			'not_found'          => __( 'No desire portfolio found.', 'desire portfolio-filter' ),
+			'not_found_in_trash' => __( 'No desire portfolio found in Trash.', 'desire portfolio-filter' )
 		);
+		$args = array(
+			'labels'             => $labels,
+			'description'        => __( 'Description.', 'your-plugin-textdomain' ),
+			'public'             => true,
+			'publicly_queryable' => true,
+			'show_ui'            => true,
+			'show_in_menu'       => true,
+			'query_var'          => true,
+			'rewrite'            => array( 'slug' => 'book' ),
+			'capability_type'    => 'post',
+			'has_archive'        => true,
+			'hierarchical'       => false,
+			'menu_position'      => null,
+			'supports'           => array( 'title', 'editor', 'author', 'thumbnail', '', 'comments' )
+		);
+		register_post_type( 'desire_portfolio', $args );
 	}
 }
 
