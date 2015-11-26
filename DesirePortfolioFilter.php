@@ -17,16 +17,15 @@ require_once 'DesirePortfolioFilterAutoload.php';
 
 class DesirePortfolioFilter
 {
-
     /**
      * Init hooks
      */
     static function init()
     {
-
         // Theme setup
         add_action('admin_init', array(__CLASS__, 'is_jetpack'));
-        add_action('after_setup_theme', array(__CLASS__, 'desire_theme_setup'));
+        add_action('after_setup_theme', array(__CLASS__, 'desire_plugin_setup'));
+        add_action('init', array( __CLASS__, 'desire_portfolio_post_type'));
 
         // Hooks and actions init
         add_theme_support('jetpack-portfolio');
@@ -36,16 +35,19 @@ class DesirePortfolioFilter
         add_action('plugins_loaded', array('DesirePortfolioTemplate', 'get_instance'));
     }
 
-
-    static function desire_theme_setup()
+    /**
+     * Plugin theme
+     */
+    static function desire_plugin_setup()
     {
         load_theme_textdomain('desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . '/lang');
     }
 
-
+    /**
+     * Add css & scripts
+     */
     static function desire_portfolio_scripts()
     {
-
         wp_register_script('desire-isotope', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'js/isotope.pkgd.min.js', array('jquery'), '2.2.2', true);
         wp_register_script('desire-images-loaded', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'js/imagesloaded.pkgd.min.js', array('jquery', 'desire-isotope'), '3.2.0', true);
         wp_register_style('desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'css/desire-portfolio-filter.css', array(), '0.2', 'all');
@@ -57,10 +59,12 @@ class DesirePortfolioFilter
         wp_enqueue_script('desire-portfolio-filter');
     }
 
-
+    /**
+     * Check if jetpack is activated
+     */
     static function is_jetpack()
     {
-        if (is_admin() && current_user_can('activate_plugins') && !is_plugin_active('jetpack/jetpack.php')) {
+        if ( is_admin() && current_user_can( 'activate_plugins' ) && !is_plugin_active('jetpack/jetpack.php' ) ) {
             add_action('admin_notices', array(__CLASS__, 'disabled_notice'));
 
             deactivate_plugins(plugin_basename(__FILE__));
@@ -71,12 +75,30 @@ class DesirePortfolioFilter
         }
     }
 
-
+    /**
+     * Show notices
+     */
     static function disabled_notice()
     {
         $class = "error";
         $message = __('Desire Porfolio Filter requires Jetpack plugin and Custom Post Types Portfolio feature to be activated', 'desire-portfolio-filter');
         echo "<div class=\"$class\"><p>$message</p></div>";
+    }
+
+    /**
+     * Create desire portfolio custom post type
+     */
+    static function desire_portfolio_post_type() {
+        register_post_type( 'desire_portfolio',
+            array(
+                'labels' => array(
+                    'name' => __( 'Desire Portfolio' ),
+                    'singular_name' => __( 'Desire Portfolio' )
+                ),
+                'public' => true,
+                'has_archive' => true,
+            )
+        );
     }
 }
 
