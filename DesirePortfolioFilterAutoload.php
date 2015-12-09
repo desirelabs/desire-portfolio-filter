@@ -15,3 +15,4 @@ spl_autoload_register(function ($class) {
         echo 'Classes not loaded : ' . $e->getMessage();
     }
 });
+$DesirePortfolioOptions = new DesirePortfolioOptions();

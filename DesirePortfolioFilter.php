@@ -10,20 +10,79 @@
  * Text Domain: desire-portfolio-filter
  * Domaine Path: /lang
  */
-
+define('PLUGIN_NAME', 'Desire Portfolio Filter');
 define('DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR', __DIR__);
 define('DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
-define( 'DESIRE_PORTFOLIO_OPTIONS', 'desire_portfolio_options');
+define('DESIRE_PORTFOLIO_OPTIONS', 'desire_portfolio_options');
 require_once 'DesirePortfolioFilterAutoload.php';
 
 class DesirePortfolioFilter
 {
+
+    public static $options;
 
     /**
      * Init hooks
      */
     static function init()
     {
+
+        self::$options = [
+            'display_types' => [
+                'label' => __('Display types ?', 'desire-portfolio-filter'),
+                'option_name' => 'display_types',
+                'field_type' => 'checkbox',
+                'options' => []
+            ],
+            'display_tags' => [
+                'label' => __('Display tags ?', 'desire-portfolio-filter'),
+                'option_name' => 'display_tags',
+                'field_type' => 'checkbox',
+                'options' => []
+            ],
+            'display_content' => [
+                'label' => __('Display content ?', 'desire-portfolio-filter'),
+                'option_name' => 'display_content',
+                'field_type' => 'checkbox',
+                'options' => []
+            ],
+            'include_types' => [
+                'label' => __('Include types (seperated by comas)', 'desire-portfolio-filter'),
+                'option_name' => 'include_types',
+                'field_type' => 'text',
+                'options' => []
+            ],
+            'include_tags' => [
+                'label' => __('Include tags (seperated by comas)', 'desire-portfolio-filter'),
+                'option_name' => 'include_tags',
+                'field_type' => 'text',
+                'options' => []
+            ],
+            'showposts' => [
+                'label' => __('Number of projects to show (0 for unlimited)', 'desire-portfolio-filter'),
+                'option_name' => 'showposts',
+                'field_type' => 'text',
+                'options' => []
+            ],
+            'order' => [
+                'label' => __('Ascending or descending order ?', 'desire-portfolio-filter'),
+                'option_name' => 'order',
+                'field_type' => 'select',
+                'options' => [
+                    'asc',
+                    'desc'
+                ]
+            ],
+            'orderby' => [
+                'label' => __('Order by', 'desire-portfolio-filter'),
+                'option_name' => 'orderby',
+                'field_type' => 'select',
+                'options' => [
+                    'date',
+                    'title'
+                ]
+            ]
+        ];
 
         // Theme setup
         add_action('admin_init', array(__CLASS__, 'is_jetpack'));
@@ -38,6 +97,12 @@ class DesirePortfolioFilter
     }
 
 
+    static function getOptions()
+    {
+        return self::$options;
+    }
+
+
     static function desire_theme_setup()
     {
         load_theme_textdomain('desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR . '/lang');
@@ -46,16 +111,15 @@ class DesirePortfolioFilter
 
     static function desire_portfolio_scripts()
     {
-
+        wp_register_style('desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'css/desire-portfolio-filter.css', array(), '0.2', 'all');
         wp_register_script('desire-isotope', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'js/isotope.pkgd.min.js', array('jquery'), '2.2.2', true);
         wp_register_script('desire-images-loaded', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'js/imagesloaded.pkgd.min.js', array('jquery', 'desire-isotope'), '3.2.0', true);
-        wp_register_style('desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'css/desire-portfolio-filter.css', array(), '0.2', 'all');
         wp_register_script('desire-portfolio-filter', DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL . 'js/desire-portfolio-filter.js', array('jquery', 'desire-isotope', 'desire-images-loaded'), '0.2', true);
 
-        wp_enqueue_style('desire-portfolio-filter');
+        /*wp_enqueue_style('desire-portfolio-filter');
         wp_enqueue_script('desire-isotope');
         wp_enqueue_script('desire-images-loaded');
-        wp_enqueue_script('desire-portfolio-filter');
+        wp_enqueue_script('desire-portfolio-filter');*/
     }
 
 
