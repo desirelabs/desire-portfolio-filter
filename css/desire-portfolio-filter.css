@@ -5,7 +5,7 @@
  */
 
 .filter-button-group {
-    padding: 10px;
+    padding: 10px 0;
 }
 
 .grid-sizer,
@@ -14,7 +14,7 @@
 }
 
 .gutter-sizer {
-    width: 3.33%;
+    width: 3.29%;
 }
 
 .portfolio-item img {
@@ -45,7 +45,6 @@
     .gutter-sizer {
         width: 3.33%;
     }
-
 }
 
 @media screen and (max-width:480px) {
@@ -58,5 +57,4 @@
     .gutter-sizer {
         width: 0%;
     }
-
 }

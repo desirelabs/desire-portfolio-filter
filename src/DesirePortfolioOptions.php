@@ -10,11 +10,11 @@ class DesirePortfolioOptions
 
     public function __construct()
     {
-        add_action('admin_menu', array(&$this, 'dpf_add_admin_menu'));
+        add_action('admin_menu', array(&$this, 'dpf_add_admin_page'));
         add_action('admin_init', array(&$this, 'dpf_settings_init'));
     }
 
-    public function dpf_add_admin_menu()
+    public function dpf_add_admin_page()
     {
         add_menu_page(
             'Desire Portfolio Filter',
@@ -23,39 +23,50 @@ class DesirePortfolioOptions
             'desire_portfolio_filter',
             array(&$this, 'desire_portfolio_filter_options_page')
         );
-
     }
 
-
+    /**
+     * Initiate options from options array
+     */
     public function dpf_settings_init()
     {
-        /* Retrieve options */
-        $this->options = DesirePortfolioFilter::$options;
-        register_setting('dpf_option_page', 'dpf_settings');
-
-        add_settings_section(
-            'dpf_portfolio_query_section',
-            __('Parameters to query your portfolio projects', 'desire-portfolio-filter'),
-            array(&$this, 'dpf_settings_section_callback'),
-            'dpf_option_page'
-        );
-
+        $this->options = DesirePortfolioFilter::getOptions();
         /**
-         * Use options array to build plugin options
-         */
-        foreach( $this->options as $key => $value ) {
+         * todo set default values
+         * $options = get_option('dpf_settings');
+         * */
 
-            add_settings_field(
-                $key,
-                $value['label'],
-                array(&$this, 'dpf_'.$value['field_type'].'_field_render'),
-                'dpf_option_page',
-                'dpf_portfolio_query_section',
-                array(
-                    'option_name' => $value['option_name'],
-                    'options' => $value['options']
-                )
+        foreach ( $this->options as $step => $props ) {
+            register_setting('dpf_option_page_'.$step, 'dpf_settings');
+            add_settings_section(
+                strtolower( str_replace( ' ', '_', $props['page_title'] ) ),
+                $props['page_description'],
+                $this->dpf_settings_section_callback(),
+                'dpf_option_page_'.$step
             );
+
+            /**
+             * Use options array to build DPF options
+             */
+            foreach( $props['fields'] as $key => $value ) {
+
+                /**
+                 * todo set default values
+                 * if ( !isset( $options[$value['option_name']] ) )
+                 * add_option( $value['option_name'], $value['default']);
+                 * */
+                add_settings_field(
+                    $key,
+                    $value['label'],
+                    array(&$this, 'dpf_'.$value['field_type'].'_field_render'), // returns the right filed rendering callback (checkbox, text...)
+                    'dpf_option_page_'.$step,
+                    strtolower( str_replace( ' ', '_', $props['page_title'] ) ),
+                    array(
+                        'option_name' => $value['option_name'],
+                        'options' => $value['options']
+                    )
+                );
+            }
         }
     }
 
@@ -85,7 +96,7 @@ class DesirePortfolioOptions
         ?>
         <input type='text' name='dpf_settings[<?php echo $args['option_name'] ?>]'
                value='<?php echo isset($options[$args['option_name']]) ? $options[$args['option_name']] : ""; ?>'>
-    <?php
+        <?php
     }
 
     /**
@@ -100,7 +111,7 @@ class DesirePortfolioOptions
         <textarea name='dpf_settings[<?php echo $args['option_name'] ?>]' value=''>
             <?php echo isset($options[$args['option_name']]) ? $options[$args['option_name']] : ""; ?>
         </textarea>
-    <?php
+        <?php
     }
 
     /**
@@ -113,35 +124,22 @@ class DesirePortfolioOptions
         $options = get_option('dpf_settings');
         ?>
         <select name='dpf_settings[<?php echo $args['option_name'] ?>]'>
-            <?php foreach ($args['options'] as $key => $val): ?>
-                <option <?php isset($options[$args['option_name']]) ? selected($options['option_name'], 1) : "" ?>
-                    value='<?php echo $val; ?>'><?php echo $val ?></option>
+            <?php foreach ( $args['options'] as $key => $val ): ?>
+                <option <?php selected($options[$args['option_name']], $val, 1); ?> value="<?php echo $val; ?>"><?php echo $val ?></option>
             <?php endforeach; ?>>
         </select>
-    <?php
+        <?php
     }
 
 
     public function dpf_settings_section_callback()
     {
-        echo __('This section description', 'desire-portfolio-filter');
+        echo __('This section description', DPF_TEXT_DOMAIN);
     }
 
 
     public function desire_portfolio_filter_options_page()
     {
-        ?>
-        <form action='options.php' method='post'>
-
-            <h2>Desire Portfolio Filter</h2>
-
-            <?php
-            settings_fields('dpf_option_page');
-            do_settings_sections('dpf_option_page');
-            submit_button();
-            ?>
-
-        </form>
-        <?php
+        include_once('templates/admin-template.php');
     }
 }
