@@ -13,8 +13,8 @@
 
 define('DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR', __DIR__);
 define('DESIRE_PORTFOLIO_FILTER_PLUGIN_DIR_URL', plugin_dir_url(__FILE__));
-require_once 'DesirePortfolioFilterAutoload.php';
 define( 'DESIRE_PORTFOLIO_OPTIONS', 'desire_portfolio_options');
+require_once 'DesirePortfolioFilterAutoload.php';
 
 class DesirePortfolioFilter
 {
