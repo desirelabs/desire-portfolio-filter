@@ -4,7 +4,7 @@ Contributors: franck
 Tags: portfolio, isotope, masonry, jetpack, pinterest like, cards
 Requires at least: 3.5
 Tested up to: 4.7.1
-dev tag: 0.2.5
+dev tag: 1.1
 License: MIT
 Desire Portfolio Filter is a responsive plugin which allows visitors to filter Jetpack portfolio by type.
 
@@ -37,21 +37,22 @@ But you have the possibility to override the default CSS with your own values in
 * use .gutter-sizer width to set your gutter's size
 * apply a margin-bottom to .portfolio-item, equal to .gutter-sizer width to get the job done
 
-I'm willing to bring those features directly accessible via a dedicated administration menu page or via shortcode very soon. Probabably in a next release. So be patient :)
-
 == Translation ==
 
-The plugin comes with english and french translations. Feel free to [fork me on Github](https://github.com/neovea/desire-portfolio-filter "fork me on Github") if you want me to add yours :)
+The plugin comes with english and french translations. Feel free to [fork me on Github](https://github.com/desirelabs/desire-portfolio-filter "fork me on Github") if you want me to add yours :)
 
 == Support ==
 
 I'll offer support as much as I can through :
 [WordPress official page](http://wordpress.org/plugins/desire-portfolio-filter/ "WordPress Official repository")
-[My Github official page](https://github.com/neovea/desire-portfolio-filter "My Github Official repository")
+[My Github official page](https://github.com/desirelabs/desire-portfolio-filter "My Github Official repository")
 
 *Notice that this plugin is made on my free time, so please, be patient if I don't answer your requests right away ;)*
 
 == Changelog ==
+
+= 1.1 =
+* Update readme
 
 = 1.0 =
 * Update licence
